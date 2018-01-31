@@ -1,0 +1,43 @@
+/* ============
+ *    LOGIN
+ * ============
+ */
+:root {
+    --login-color: #FFF;
+    --login-bg-header: #00968a;
+    
+}
+
+.login-bg {
+    background-color: #d3d3d3;
+}
+.login-header {
+    color: var(--login-color);
+    background-color: var(--login-bg-header);
+    text-align: center;
+    padding: 2.5rem;
+}
+
+.login-subtitle {
+    color: #e6e1e1;
+}
+
+.login-card {
+    border-radius: 0;
+    border: None;
+    max-width: 25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.login-btn {
+    color: var(--login-color);
+    background-color: var(--login-bg-header);
+    border-color: var(--login-color);
+    border-radius: 0;
+}
+
+/* ============
+ *  END LOGIN
+ * ============
+ */
