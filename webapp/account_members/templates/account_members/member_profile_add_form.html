@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active"><a href="#">Add</a></li>
+{% endblock %}
+
+{% block content %}
+<h1>Add Member</h1>
+<hr/>
+<form class='text-left' method="post" action="{% url 'home' %}">
+{% csrf_token %}
+{{ form.as_p }}
+
+<input type="submit" value="Add" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+
+{% endblock %}
