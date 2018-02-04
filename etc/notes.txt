@@ -1,0 +1,7 @@
+Technology stack:
+    - Python 3.x
+    - Django 1.11.4
+    
+Virtualenv command: `virtualenv venv -p python3.5`
+    
+
