@@ -3,7 +3,8 @@
 {% load crispy_forms_tags %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item active"><a href="#">Add</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'members:member-profile-list' %}">Members</a></li>
+  <li class="breadcrumb-item active">Add</li>
 {% endblock %}
 
 {% block content %}
@@ -13,17 +14,17 @@
 		<div class="card mb-3 card-form">
 		<h4 class="card-header ch-bg">
 			<span>
-				<i class="fa fa-arrow-left i-back" aria-hidden="true" routerLink="/category"></i> 
+				<a href="{% url 'members:member-profile-list' %}" style="color: #FFF"><i class="fa fa-arrow-left i-back" aria-hidden="true"></i></a>
 			<span>
 			Add Member </h4>
 
 			<div class="card-body">
-						<form method="post" novalidate>
-								{% csrf_token %}
-								{{ form | crispy }}
-								<button type="submit" class="btn btn-success">Create</button>
-								<input type="hidden" name="next" value="{{ next }}" />
-						</form>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="btn btn-success">Create</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
 			</div>
 		</div>
 	</div>

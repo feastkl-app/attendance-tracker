@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Members</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-sm-4">
+    <div class="card-widget card-inverse card-success">
+      <div class="card-block">
+        <div class="h1 text-muted text-right mb-2">
+          <a href="{% url 'members:member-profile-add' %}"><i class="fa fa-user-plus"></i></a>
+        </div>
+        <div class="h4 mb-0">385</div>
+        <small class="text-muted text-uppercase font-weight-bold">Members</small>
+      </div>
+    </div>
+  </div><!--/.col-->
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card mb-3 card-form">
+		<h4 class="card-header ch-bg">
+			<span><i class="fa fa-bars" aria-hidden="true"></i><span> Member List
+		</h4>
+
+		<div class="card-body">
+			<table class="table table-responsive">
+				<thead class="thead-inverse">
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Location</th>
+						<th>Gender</th>
+						<th>Status</th>
+						<th>Birth Date</th>
+						<th>Member Since</th>
+						<th>Birth Date</th>
+						<th>Nationality</th>
+						<th>Date Updated</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div> <!-- ./card-body -->
+
+		</div> <!-- ./card -->
+	</div> <!-- ./col-md-12 -->
+</div> <!-- ./row -->
+{% endblock %}

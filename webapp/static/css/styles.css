@@ -67,3 +67,22 @@
 	border: none;
 }
 
+/* ===============
+ *   WIDGET CARD
+ * ===============
+ */
+.card-widget {
+  margin-bottom: 1.5rem;
+  position: relative;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #FFF;
+  background-clip: border-box;
+  border: 1px solid #c2cfd6;
+}
+
+.card-body, .card-block {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
