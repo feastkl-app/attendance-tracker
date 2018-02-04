@@ -2,6 +2,11 @@ Technology stack:
     - Python 3.x
     - Django 1.11.4
     
-Virtualenv command: `virtualenv venv -p python3.5`
-    
+For fresh clone:
+    - virtualenv command: `virtualenv venv -p python3.5`
+    - GOTO: cd webapp
+    - run commands:
+        > `./manage.py makemigrations`
+        > `./manage.py migrate`
+        > `./manage.py createsuperuser` # Enter your desired super user
 
