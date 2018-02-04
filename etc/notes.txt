@@ -9,4 +9,5 @@ For fresh clone:
         > `./manage.py makemigrations`
         > `./manage.py migrate`
         > `./manage.py createsuperuser` # Enter your desired super user
-
+        
+Update: study linguist to change the language of this repository. from CSS to Python
