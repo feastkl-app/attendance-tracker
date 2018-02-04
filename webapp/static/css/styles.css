@@ -5,6 +5,7 @@
 :root {
     --login-color: #FFF;
     --login-bg-header: #00968a;
+    --body-bg-color: #e4e5e6;
     
 }
 
@@ -41,3 +42,28 @@
  *  END LOGIN
  * ============
  */
+
+
+/* ============
+ *    LAYOUT
+ * ============
+ */
+.content-wrapper {
+  background: var(--body-bg-color);
+}
+
+.ch-bg {
+  /* background: linear-gradient(to bottom, #00b7ea 0%,#009ec3 100%); */
+  background: #009688;
+  color: #FFF;
+  -moz-box-shadow:0 5px 5px rgba(228, 228, 228, 0.75);
+  -webkit-box-shadow: 0 5px 5px rgba(228, 228, 228, 0.75);
+  box-shadow: 0 5px 5px rgba(228, 228, 228, 0.75);
+	font-size: 1.8rem;
+}
+
+.card-form {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	border: none;
+}
+

@@ -5,7 +5,7 @@ from .models import MemberProfile
 class MemberProfileForm(forms.ModelForm):
     class Meta:
         model = MemberProfile 
-        fields = (
+        fields = [
             'firstname',
             'lastname',
             'middlename',
@@ -17,4 +17,4 @@ class MemberProfileForm(forms.ModelForm):
             'member_since',
             'active_member' ,
             'location',
-        )
+        ]
