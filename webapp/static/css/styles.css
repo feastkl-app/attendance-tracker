@@ -86,3 +86,23 @@
   flex: 1 1 auto;
   padding: 1.25rem;
 }
+
+.card-group {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+@media (min-width: 576px)
+.card-group {
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+
+@media (min-width: 576px)
+.card-group > .card {
+    -ms-flex: 1 0 0%;
+    flex: 1 0 0%;
+    margin-bottom: 0;
+}

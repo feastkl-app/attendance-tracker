@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Ministry</li>
+{% endblock %}
+
+{% block content %}
+<div class="card-group">
+	<div class="card-widget card-inverse card-success">
+		<div class="card-block">
+			<div class="h1 text-muted text-right mb-2">
+				<a href="{% url 'members:member-profile-add' %}"><i class="fa fa-user-plus"></i></a>
+			</div>
+			<div class="h4 mb-0">385</div>
+			<small class="text-muted text-uppercase font-weight-bold">Members</small>
+		</div>
+	</div>
+	<div class="card-widget card-inverse card-success">
+		<div class="card-block">
+			<div class="h1 text-muted text-right mb-2">
+				<a href="{% url 'members:member-profile-add' %}"><i class="fa fa-user-plus"></i></a>
+			</div>
+			<div class="h4 mb-0">385</div>
+			<small class="text-muted text-uppercase font-weight-bold">Members</small>
+		</div>
+	</div>
+	<div class="card-widget card-inverse card-success">
+		<div class="card-block">
+			<div class="h1 text-muted text-right mb-2">
+				<a href="{% url 'members:member-profile-add' %}"><i class="fa fa-user-plus"></i></a>
+			</div>
+			<div class="h4 mb-0">385</div>
+			<small class="text-muted text-uppercase font-weight-bold">Members</small>
+		</div>
+	</div>
+</div>
+{% endblock %}

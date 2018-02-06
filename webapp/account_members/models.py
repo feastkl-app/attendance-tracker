@@ -59,9 +59,11 @@ class MemberProfile(BaseDate):
         return user
 
 class MemberType(BaseType):
+    # Ex: Member, Head
     pass
 
 class MinistryType(BaseType):
+    # Ex: LG, Ministry, Council, 
     pass
 
 class Ministry(BaseType):
