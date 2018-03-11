@@ -37,13 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'utility.apps.UtilityConfig',
 
     #Third Party
     'crispy_forms',
 
     #My apps
-    'account_members',
-    'event_attendance',
+    'account_members.apps.AccountMembersConfig',
+    'attendance.apps.AttendanceConfig',
+    'dashboard.apps.DashboardConfig',
+    'events.apps.EventsConfig',
+    'groups.apps.GroupsConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +134,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 

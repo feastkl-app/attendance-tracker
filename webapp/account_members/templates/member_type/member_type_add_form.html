@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item"><a href="{% url 'members:member-profile-list' %}">Members</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'members:member_profile_list' %}">Member Type</a></li>
   <li class="breadcrumb-item active">Add</li>
 {% endblock %}
 
@@ -14,9 +14,9 @@
 		<div class="card mb-3 card-form">
 		<h4 class="card-header ch-bg">
 			<span>
-				<a href="{% url 'members:member-profile-list' %}" style="color: #FFF"><i class="fa fa-arrow-left i-back" aria-hidden="true"></i></a>
+				<a href="{% url 'members:member_profile_list' %}" style="color: #FFF"><i class="fa fa-arrow-left i-back" aria-hidden="true"></i></a>
 			<span>
-			Add Member </h4>
+			Add Member Type </h4>
 
 			<div class="card-body">
         <form method="post" novalidate>
