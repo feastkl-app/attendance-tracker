@@ -13,30 +13,17 @@
 <div class="row">
   <div class="statistics col-lg-3 col-12">
     <div class="statistic d-flex align-items-center bg-white has-shadow">
-      <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
+      <div class="icon bg-red"><i class="fa fa-users"></i></div>
       <div class="text"><strong>{{ total_count }}</strong><br><small>Members</small></div>
     </div>
   </div>
-
-	<!--<div class="col-sm-4">
-    <div class="card-widget card-inverse card-success">
-      <div class="card-block">
-        <div class="h1 text-muted text-right mb-2">
-          <a href="{% url 'members:member_profile_add' %}"><i class="fa fa-user-plus"></i></a>
-        </div>
-        <div class="h4 mb-0">{{ total_count }}</div>
-        <small class="text-muted text-uppercase font-weight-bold">Members</small>
-      </div>
-    </div>
-  </div> -->
 </div>
 <div class="row mt-30">
 	<div class="col-md-12">
 	  <div class="card">
 		<div class="card-close">
 		  <div class="dropdown">
-			<button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-			<div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+			<a href="#" class="btn btn-outline-dark"><i class="fa fa-plus" aria-hidden="true"></i> Add Member</a>
 		  </div>
 		</div>
 		<div class="card-header d-flex align-items-center">
