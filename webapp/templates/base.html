@@ -37,12 +37,21 @@
           </header>
 
           <!-- Breadcrumbs -->
-          {% block breadcrumbs %}
-          {% endblock %}
+		  <div class="breadcrumb-holder container-fluid">
+		    <ul class="breadcrumb">
+			  {% block breadcrumbs %}
+			  {% endblock %}
+		    </ul>
+		  </div>
+
 
           <!-- Content -->
-          {% block content %}
-          {% endblock %}
+		  <section>
+		    <div class="container-fluid">
+              {% block content %}
+              {% endblock %}
+            </div>
+		  </section>
 
           {% include 'includes/footer.html' %}
           <!-- Page Footer-->

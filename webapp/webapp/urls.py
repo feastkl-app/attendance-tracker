@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
 
     # Account members
-    #url(r'^members/', include('account_members.urls', namespace='members')),
+    url(r'^members/', include('account_members.urls', namespace='members')),
 ]
