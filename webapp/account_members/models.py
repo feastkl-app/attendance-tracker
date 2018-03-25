@@ -22,7 +22,7 @@ def delete_member_profile_user_account(sender, instance, **kwargs):
         instance.user.delete()
 
 def generate_member_username(firstname, lastname):
-    return ''.join([firstname.lower().strip(), lastname.lower().strip()])
+    return ''.join([firstname.lower().strip(), lastname.lower().strip()]).replace(' ', '')
 
 class MemberType(AbstractBaseType):
     # Ex: Member, Head
