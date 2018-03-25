@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import MemberProfile, MemberType, MinistryType  
+from .models import MemberProfile, MemberType
 
 class MemberProfileForm(forms.ModelForm):
     class Meta:
@@ -9,6 +9,7 @@ class MemberProfileForm(forms.ModelForm):
             'firstname',
             'lastname',
             'middlename',
+            'primary_role',
             'remarks',
             'gender',
             'birthdate',
@@ -24,7 +25,3 @@ class MemberTypeForm(forms.ModelForm):
         model = MemberType
         fields = [ 'name', 'remarks' ]
 
-class MinistryTypeForm(forms.ModelForm):
-    class Meta:
-        model = MinistryType
-        fields = [ 'name', 'remarks' ]

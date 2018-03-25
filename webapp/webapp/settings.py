@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'attendance.apps.AttendanceConfig',
     'dashboard.apps.DashboardConfig',
     'events.apps.EventsConfig',
-    'groups.apps.GroupsConfig',
+    'ministry_group.apps.MinistryGroupConfig',
 ]
 
 MIDDLEWARE = [

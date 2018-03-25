@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with member_active="active" %}
+{% endblock sidebar %}
+
+{% block header %}
+  Members
+{% endblock header %}
+
+{% block breadcrumbs %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'members:member_profile_list' %}">Members</a></li>
+  <li class="breadcrumb-item active">{{ member.pk }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+	  <div class="client card">
+		<div class="card-close">
+		  <div class="dropdown">
+			<a href="{% url 'members:member_profile_update' member.pk %}" class="btn btn-primary">
+				<i class="fa fa-pencil"></i>
+			</a>
+		  </div>
+		</div>
+		<div class="card-body text-center">
+		  <div class="client-avatar"><img src="{% static 'img/feast-logo.jpg' %}" alt="..." class="img-fluid rounded-circle">
+			<div class="status bg-green"></div>
+		  </div>
+		  <div class="client-title">
+			<h3>{{ member.firstname }} {{member.middlename }} {{ member.lastname }}</h3>
+		    <span>{{ member.email }}</span>
+		    <a href="#">{{ member.primary_role }}</a>
+		  </div>
+		  <div class="row text-left">
+			  <div class="col-12">
+				<h5 style="margin-top: 20px; color: grey; text-align: left">Profile</h5>
+				<hr>
+				<div class="card-text">
+					<div class="container">
+						<h6 class="card-text text-muted value"><strong>Location: </strong>{{ member.location }}</h6>
+						<h6 class="card-text text-muted value"><strong>Gender: </strong>{{ member.gender }}</h6>
+						<h6 class="card-text text-muted value"><strong>Marital Status: </strong>{{ member.marital_status }}</h6>
+						<h6 class="card-text text-muted value"><strong>Nationality: </strong>{{ member.nationality }}</h6>
+						<h6 class="card-text text-muted value"><strong>Birth Date: </strong>{{ member.birthdate }}</h6>
+						<h6 class="card-text text-muted value"><strong>Member Since: </strong>{{ member.member_since }}</h6>
+						<h6 class="card-text text-muted value"><strong>Contact Number 1: </strong>{{ member.contact_number1 }}</h6>
+						<h6 class="card-text text-muted value"><strong>Contact Number 2: </strong>{{ member.contact_number2 }}</h6>
+						<h6 class="card-text text-muted value"><strong>Active Member: </strong>{{ member.active_member }}</h6>
+						<h6 class="card-text text-muted value"><strong>Remarks: </strong>{{ member.remarks }}</h6>
+					</div>
+				</div>
+			  </div>
+		  </div>
+
+		</div>
+		<div class="card-footer">
+			<small class="text-muted"><a href="#" target="_blank">Last Updated By: {{ member.last_updated_by }}</a></small>
+		</div>
+	  </div>
+  </div>
+</div>
+
+{% endblock content %}

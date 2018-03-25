@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with ministry_active="active" %}
+{% endblock sidebar %}
+
+{% block header %}
+  Ministry Group
+{% endblock header %}
+
+{% block breadcrumbs %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active">Ministry Group</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+{% for mm in ministry_group %}
+	<h1>{{ mm.name }}</h1>	
+{% endfor %}
+{% endblock content %}

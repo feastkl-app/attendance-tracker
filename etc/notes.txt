@@ -11,3 +11,22 @@ For fresh clone:
         > `./manage.py createsuperuser` # Enter your desired super user
         
 Update: study linguist to change the language of this repository. from CSS to Python
+
+Group Type
+    - Member Type
+        - Feast Builder
+        - Council
+        - LG Head 
+        - Ministry Head
+        - Regular Member
+        - Accountant
+        - Bookeeper
+        - First Time
+
+
+    - Minsitry/Group Type
+        - Light Group (e.g. WoW, VitamenC, SnL/Pogi, Single Girls)
+        - Council ()
+        - Ministry (e.g. Dance, Food, Music, Admin, Intercessory)
+        - Regular Members ()
+        - First Timers

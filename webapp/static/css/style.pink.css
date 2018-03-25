@@ -1875,12 +1875,13 @@ select option {
   z-index: -1;
   background: url(../img/bg.jpg);
   background-size: cover;
-  -webkit-filter: blur(10px);
-  filter: blur(10px);
+  /* -webkit-filter: blur(10px);
+  filter: blur(10px); */
   z-index: 1;
   position: absolute;
   top: 0;
   right: 0;
+  opacity: 0.2;
 }
 
 .login-page .container {

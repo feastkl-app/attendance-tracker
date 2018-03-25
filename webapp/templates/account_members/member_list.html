@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with member_active="active" %}
+{% endblock sidebar %}
 
 {% block header %}
   Members
-{% endblock %}
+{% endblock header %}
 
 {% block breadcrumbs %}
   <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
   <li class="breadcrumb-item active">Members</li>
-{% endblock %}
+{% endblock breadcrumbs %}
 
 {% block content %}
 <div class="row">
@@ -23,7 +28,8 @@
 	  <div class="card">
 		<div class="card-close">
 		  <div class="dropdown">
-			<a href="#" class="btn btn-outline-dark"><i class="fa fa-plus" aria-hidden="true"></i> Add Member</a>
+			<a href="{% url 'members:member_profile_add'  %}" class="btn btn-outline-dark">
+			<i class="fa fa-user-plus" aria-hidden="true"></i> Add Member</a>
 		  </div>
 		</div>
 		<div class="card-header d-flex align-items-center">
@@ -38,9 +44,10 @@
 				  <th>First Name</th>
 				  <th>Last Name</th>
 				  <th>Gender</th>
-				  <th>Status</th>
+				  <th>Role</th>
 				  <th>Member Since</th>
 				  <th>Active</th>
+				  <th>Actions</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -50,9 +57,26 @@
 					  <td>{{ member.firstname }}</td>
 					  <td>{{ member.lastname }}</td>
 					  <td>{{ member.gender }}</td>
-					  <td>{{ member.marital_status }}</td>
+					  <td>{{ member.primary_role }}</td>
 					  <td>{{ member.member_since }}</td>
-					  <td>{{ member.active_member }}</td>
+					  <td>
+						{% if member.active_member %}
+							<span class="badge badge-primary">Yes</span>
+						{% else %}
+							<span class="badge badge-danger">No</span>
+						{% endif %}
+					  </td>
+					  <td>
+						<!-- View Member Detail -->
+						<a href="{% url 'members:member_profile_details' member.pk %}" class="btn btn-sm btn-dark">
+						  <i class="fa fa-eye" aria-hidden="true"></i>
+						</a>
+
+						<!-- Update Member Detail -->
+						<a href="{% url 'members:member_profile_update' member.pk %}" class="btn btn-sm btn-primary">
+						  <i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+					  </td>
 					</tr>
 				{% endfor %}
 			  </tbody>
@@ -60,50 +84,6 @@
 		  </div>
 		</div>
 	  </div>
-		<!--<div class="card">
-		<h4 class="card-header ch-bg">
-			<span><i class="fa fa-bars" aria-hidden="true"></i><span> Member List
-		</h4>
-
-		<div class="card-body">
-			<table class="table table-responsive">
-				<thead class="thead-inverse">
-					<tr>
-                        <th>id</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Location</th>
-						<th>Gender</th>
-						<th>Status</th>
-						<th>Birth Date</th>
-						<th>Member Since</th>
-						<th>Active</th>
-						<th>Contact Number</th>
-						<th>Date Updated</th>
-					</tr>
-				</thead>
-				<tbody>
-                    {% for member in members %}
-						<tr>
-							<td>{{ member.pk }}</td>
-							<td>{{ member.firstname }}</td>
-							<td>{{ member.lastname }}</td>
-							<td>{{ member.location }}</td>
-							<td>{{ member.gender }}</td>
-							<td>{{ member.marital_status }}</td>
-							<td>{{ member.birthdate }}</td>
-							<td>{{ member.member_since }}</td>
-							<td>{{ member.active_member }}</td>
-							<td>{{ member.contact_number1 }}</td>
-							<td>{{ member.date_modified }}</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-
-		</div> 
-		-->
 	</div> <!-- ./col-md-12 -->
 </div> <!-- ./row -->
-{% endblock %}
+{% endblock content %}

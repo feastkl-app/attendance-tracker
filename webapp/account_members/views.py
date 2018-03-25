@@ -1,22 +1,21 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, ListView, TemplateView
+from django.views.generic import CreateView, DetailView, ListView, TemplateView, UpdateView
 
-from .forms import MemberProfileForm, MemberTypeForm, MinistryTypeForm
-from .models import MemberProfile, Ministry, MemberType, MinistryType
+from .forms import MemberProfileForm, MemberTypeForm
+from .models import MemberProfile, MemberType
 
 class SampleView(TemplateView):
     template_name = 'index.html'
 
-class MemberProfileCreateView(CreateView):
+class MemberProfileCreateView(LoginRequiredMixin, CreateView):
     model = MemberProfile
     form_class = MemberProfileForm
-    template_name = 'account_members/member_profile_add_form.html'
-    success_url = reverse_lazy('home')
+    template_name = 'account_members/member_create.html'
+    success_url = reverse_lazy('members:member_profile_list')
 
-class MemberProfileListView(ListView):
+class MemberProfileListView(LoginRequiredMixin, ListView):
     model = MemberProfile
     context_object_name = 'members'
     template_name = 'account_members/member_list.html'
@@ -25,20 +24,29 @@ class MemberProfileListView(ListView):
          kwargs['total_count'] = MemberProfile.objects.count()
          return super().get_context_data(**kwargs)
 
+class MemberProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = MemberProfile
+    context_object_name = 'member'
+    template_name = 'account_members/member_update.html'
+    fields = (
+        'firstname', 
+        'middlename', 
+        'lastname', 
+        'primary_role',
+        'email', 
+        'contact_number1', 
+        'contact_number2',
+        'gender',
+        'nationality',
+        'birthdate',
+        'remarks',
+        'marital_status',
+        'member_since',
+        'location',
+    )
+    success_url = reverse_lazy('members:member_profile_list')
 
-class MinistryListView(ListView):
-    model = Ministry
-    context_object_name = 'ministry'
-    template_name = 'ministry/ministry_list.html'
-
-class MemberTypeCreateView(CreateView):
-    model = MemberType
-    form_class = MemberTypeForm
-    template_name = 'member_type/member_type_add_form.html'
-    success_url = reverse_lazy('home')
-
-class MinistryTypeCreateView(CreateView):
-    model = MinistryType
-    form_class = MinistryTypeForm
-    template_name = 'ministry_type/ministry_type_add_form.html'
-    success_url = reverse_lazy('home')
+class MemberProfileDetailView(LoginRequiredMixin, DetailView):
+    model = MemberProfile
+    context_object_name = 'member'
+    template_name = 'account_members/member_details.html'

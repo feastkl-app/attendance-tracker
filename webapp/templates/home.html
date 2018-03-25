@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with home_active="active" %}
+{% endblock sidebar %}
 
 {% block header %}Dashboard{% endblock %}
 

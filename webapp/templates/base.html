@@ -27,7 +27,8 @@
     <div class="page">
         {% include 'includes/navbar_2.html' %}
         <div class="page-content d-flex align-items-stretch"> 
-            {% include 'includes/sidebar.html' %}
+          {% block sidebar %}
+          {% endblock %}
         <div class="content-inner">
           <!-- Page Header-->
           <header class="page-header">
@@ -46,7 +47,7 @@
 
 
           <!-- Content -->
-		  <section>
+		  <section style="padding: 30px 0;">
 		    <div class="container-fluid">
               {% block content %}
               {% endblock %}
