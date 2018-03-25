@@ -16,9 +16,15 @@ class Ministry(AbstractBaseType):
 
 class MinistryMember(AbstractBaseDate):
     member = models.ForeignKey(MemberProfile, related_name='ministry_member')
-    ministry = models.ForeignKey(Ministry, related_name='ministry')
     member_type = models.ForeignKey(MemberType, related_name='ministry_member_type')
 
     def __str__(self):
-        return "Ministry"
+        return "%s - %s" %(str(self.member), self.member_type)
+
+class MinistryMemberGroup(AbstractBaseDate):
+    ministry_member = models.ManyToManyField(MinistryMember)
+    ministry = models.ForeignKey(Ministry, related_name='ministry')
+
+    def __str__(self):
+        return str(self.ministry)
 

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with ministry_active="active" %}
+{% endblock sidebar %}
+
+{% block header %}
+  Members
+{% endblock header %}
+
+{% block breadcrumbs %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'ministry_group:list' %}">Ministry Group</a></li>
+  <li class="breadcrumb-item active">{{ ministry_member_group.ministry }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="articles card">
+  <div class="card-header">Ministry Group</div>
+  <div class="card-body">
+     <div class="row">
+       <div class="col-3">
+          <img src="{% static 'img/feast-logo.jpg' %}" alt=".." class="w-100 rounded">
+       </div>
+       <div class="col-9">
+         <h4 class="card-title">{{ ministry_member_group.ministry }}</h4>
+         <h5 class="card-title">{{ ministry_member_group.ministry.ministry_type }}</h5>
+         <h6 class="text-muted">Head: </h6>
+         <h6 class="text-muted">Total Members: </h6>
+       </div>
+     </div>
+    {% for mm in ministry_member_group.ministry_member.all %}
+     <div class="item d-flex align-items-center">
+       <div class="image"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid rounded-circle"></div>
+       <div class="text"><a href="#">
+               <h3 class="h5">{{ mm.member }}</h3></a><small>{{ mm.member_type }}</small></div>
+     </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
