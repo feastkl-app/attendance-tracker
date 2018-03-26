@@ -26,8 +26,8 @@
        <div class="col-9">
          <h4 class="card-title">{{ ministry_member_group.ministry }}</h4>
          <h5 class="card-title">{{ ministry_member_group.ministry.ministry_type }}</h5>
-         <h6 class="text-muted">Head: </h6>
-         <h6 class="text-muted">Total Members: </h6>
+         <h6 class="text-muted">Head: {{ ministry_head }} </h6>
+         <h6 class="text-muted">Total Members: {{ ministry_member_group.ministry_member.count }}</h6>
        </div>
      </div>
     {% for mm in ministry_member_group.ministry_member.all %}

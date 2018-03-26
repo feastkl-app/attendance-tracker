@@ -15,3 +15,13 @@ class MinistryGroupDetailView(LoginRequiredMixin, DetailView):
     model = MinistryMemberGroup
     context_object_name = 'ministry_member_group'
     template_name = 'ministry_group/ministry_group_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        ministry_head = MinistryMember.objects.filter(
+            ministrymembergroup__pk=self.kwargs['pk'], member_type__name='Ministry Head'
+        )
+        if ministry_head:
+            context['ministry_head'] = str(ministry_head[0].member)
+
+        return context
