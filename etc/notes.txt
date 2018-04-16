@@ -30,3 +30,6 @@ Group Type
         - Ministry (e.g. Dance, Food, Music, Admin, Intercessory)
         - Regular Members ()
         - First Timers
+
+# Running Local 
+python manage.py runserver --settings=webapp.settings.local

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with events_active="active" %}
+{% endblock sidebar %}
+
+{% block header %}
+  Members
+{% endblock header %}
+
+{% block breadcrumbs %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active">Events</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="row">
+  <!-- Upcoming events-->
+  <div class="col-lg-6">
+    <div class="daily-feeds card">
+      <div class="card-header">
+        <h3 class="h4">Upcoming Events</h3>
+      </div>
+      <div class="card-body no-padding">
+        {% for event in events %}
+          <!-- event -->
+          <div class="item clearfix">
+            <div class="feed d-flex justify-content-between">
+              <div class="feed-body d-flex justify-content-between">
+                  <a href="#" class="feed-profile"><img src="{% static 'img/login-bg.jpg' %}" alt="person" class="img-fluid rounded-circle"></a>
+                <div class="content">
+                    <h5>{{ event.name }}</h5><span>Location: {{ event.location }}</span>
+                  <div class="full-date"><small>{{ event.start_date }} - {{ event.end_date }}</small></div>
+                </div>
+              </div>
+              <div class="date text-right"><span class="badge badge-success badge-events" >{{ event.event_type }}</span></div>
+            </div>
+            <div class="quote has-shadow"> <small>{{ event.description }}</small></div>
+            <div class="CTAs pull-right">
+                {% for ministry in event.attending_ministries.all %}
+                <a href="#" class="btn btn-xs btn-secondary"><i class="fa fa-universal-access"> </i>{{ ministry.ministry }}</a>
+                {% endfor %}
+            </div>
+          </div>
+          <!-- ./event -->
+        {% endfor %}
+      </div>`
+    </div>
+  </div>
+  <!-- ./Upcoming events-->
+
+  <!-- Recent events-->
+  <div class="col-lg-6">
+    <div class="recent-updates card">
+      <div class="card-header">
+        <h3 class="h4">Recent Events</h3>
+      </div>
+      <div class="card-body no-padding">
+        {% for event in events %}
+          <!-- event -->
+          <div class="item d-flex justify-content-between">
+            <div class="info d-flex">
+              <div class="icon"><i class="icon-rss-feed"></i></div>
+              <div class="title">
+                <h5>{{ event.name }}</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
+              </div>
+            </div>
+            <div class="date text-right"><strong>24</strong><span>May</span></div>
+          </div>
+          <!-- ./event -->
+        {% endfor %}
+      </div>`
+    </div>
+  </div>
+  <!-- ./Recent events-->
+
+</div>
+{% endblock content %}

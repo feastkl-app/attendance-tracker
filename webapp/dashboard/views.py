@@ -7,7 +7,7 @@ class HomePageView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         print(self.request.user)
         print(dir(self.request.user))
-        print(self.request.user.member_profile)
+        #print(self.request.user.member_profile)
         context = super(HomePageView, self).get_context_data(**kwargs)
         return context
 

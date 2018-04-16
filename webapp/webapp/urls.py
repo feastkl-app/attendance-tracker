@@ -14,6 +14,9 @@ urlpatterns = [
     # Account members
     url(r'^members/', include('account_members.urls', namespace='members')),
 
+    # Events
+    url(r'^events/', include('events.urls', namespace='events')),
+
     # Ministry group
     url(r'^ministry-group/', include('ministry_group.urls', namespace='ministry_group')),
 ]

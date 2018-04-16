@@ -10,6 +10,7 @@ class MinistryType(AbstractBaseType):
 class Ministry(AbstractBaseType):
     is_active = models.BooleanField(default=True)
     ministry_type = models.ForeignKey(MinistryType, related_name='ministry_type')
+    description = models.TextField(max_length=500, blank=True)
 
     class Meta:
         verbose_name_plural = u"Ministries"

@@ -13,7 +13,7 @@
   <ul class="list-unstyled">
 	<li class="{{ home_active }}"><a href="{% url 'home' %}"> <i class="icon-home"></i>Home </a></li>
 	<li class="{{ attendance_active }}"><a href="#"> <i class="icon-padnote"></i>Attendance </a></li>
-	<li class="{{ events_active }}"><a href="#"> <i class="icon-interface-windows"></i>Events </a></li>
+    <li class="{{ events_active }}"><a href="{% url 'events:list' %}"> <i class="icon-interface-windows"></i>Events </a></li>
 	<li class="{{ ministry_active }}">
 		<a href="{% url 'ministry_group:list' %}"> <i class="fa fa-universal-access"></i>Ministry Group </a>
 	</li>
