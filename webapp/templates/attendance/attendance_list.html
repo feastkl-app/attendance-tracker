@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with attendance_active="active" %}
+{% endblock sidebar %}
+
+{% block header %}
+  Attendance
+{% endblock header %}
+
+{% block breadcrumbs %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active">Attendance</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<h1>Attendance</h1>
+
+{% endblock content %}

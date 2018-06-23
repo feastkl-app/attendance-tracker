@@ -16,11 +16,24 @@
 
 {% block content %}
 <div class="row">
-  <!-- Upcoming events-->
-  <div class="col-lg-6">
+  <div class="col-lg-4">
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Event Status</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>All</option>
+        <option>Recent</option>
+        <option>Ongoing</option>
+        <option>Upcoming</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!-- events-->
+  <div class="col-lg-12">
     <div class="daily-feeds card">
       <div class="card-header">
-        <h3 class="h4">Upcoming Events</h3>
+        <h3 class="h4">Feast Events</h3>
       </div>
       <div class="card-body no-padding">
         {% for event in events %}
@@ -34,12 +47,13 @@
                   <div class="full-date"><small>{{ event.start_date }} - {{ event.end_date }}</small></div>
                 </div>
               </div>
-              <div class="date text-right"><span class="badge badge-success badge-events" >{{ event.event_type }}</span></div>
+              <div class="date text-right"><span class="badge badge-success badge-events" >{{ event.event_status }}</span></div>
             </div>
             <div class="quote has-shadow"> <small>{{ event.description }}</small></div>
             <div class="CTAs pull-right">
                 {% for ministry in event.attending_ministries.all %}
-                <a href="#" class="btn btn-xs btn-secondary"><i class="fa fa-universal-access"> </i>{{ ministry.ministry }}</a>
+                  <a href="{% url 'ministry_group:details' ministry.ministry.pk %}" class="btn btn-xs btn-secondary">
+                  <i class="fa fa-universal-access"> </i>{{ ministry.ministry }}</a>
                 {% endfor %}
             </div>
           </div>
@@ -48,33 +62,7 @@
       </div>`
     </div>
   </div>
-  <!-- ./Upcoming events-->
-
-  <!-- Recent events-->
-  <div class="col-lg-6">
-    <div class="recent-updates card">
-      <div class="card-header">
-        <h3 class="h4">Recent Events</h3>
-      </div>
-      <div class="card-body no-padding">
-        {% for event in events %}
-          <!-- event -->
-          <div class="item d-flex justify-content-between">
-            <div class="info d-flex">
-              <div class="icon"><i class="icon-rss-feed"></i></div>
-              <div class="title">
-                <h5>{{ event.name }}</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-              </div>
-            </div>
-            <div class="date text-right"><strong>24</strong><span>May</span></div>
-          </div>
-          <!-- ./event -->
-        {% endfor %}
-      </div>`
-    </div>
-  </div>
-  <!-- ./Recent events-->
+  <!-- ./events-->
 
 </div>
 {% endblock content %}

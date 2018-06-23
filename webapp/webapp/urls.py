@@ -11,6 +11,9 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
 
+    # Attendance
+    url(r'^attendance/', include('attendance.urls', namespace='attendance')),
+
     # Account members
     url(r'^members/', include('account_members.urls', namespace='members')),
 
