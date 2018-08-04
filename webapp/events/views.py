@@ -4,7 +4,14 @@ from django.utils import timezone
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView, TemplateView, UpdateView
 
+from .forms import EventForm
 from .models import Event
+
+class EventsCreateView(LoginRequiredMixin, CreateView):
+    model = Event
+    form_class = EventForm
+    template_name = 'events/events_create.html'
+    success_url = reverse_lazy('events:list')
 
 class EventsListView(LoginRequiredMixin, ListView):
     model = Event
