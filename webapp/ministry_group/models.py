@@ -27,5 +27,5 @@ class MinistryMemberGroup(AbstractBaseDate):
     ministry = models.ForeignKey(Ministry, related_name='ministry')
 
     def __str__(self):
-        return str(self.ministry)
+        return "%s %s" %(str(self.ministry), self.ministry.ministry_type)
 
