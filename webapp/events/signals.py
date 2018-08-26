@@ -1,20 +1,9 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import m2m_changed, post_save
 from django.dispatch import receiver
 
 from attendance.models import EventAttendance  
 from .models import Event
 
-@receiver(post_save, sender=Event)
-def generate_attendance(sender, instance, created, **kwargs):
-    print('Signal: Generate attendance')
-    if created:
-        unique_member_list = _get_unique_members_from_event_created(instance)
-        attendance_list = _generate_attendance_from_event_created_and_members(instance, unique_member_list)
-
-        # Create attendance (bulk)
-        EventAttendance.objects.bulk_create(attendance_list)
-
-        
 def _get_unique_members_from_event_created(event_instance):
     member_list = []
 
@@ -33,3 +22,14 @@ def _generate_attendance_from_event_created_and_members(event_instance, members)
         attendance_list.append(attendance)
 
     return attendance_list
+
+@receiver(m2m_changed, sender=Event.attending_ministries.through)
+def generate_attendance(sender, instance, **kwargs):
+    action = kwargs.pop('action', None)
+    if action == 'post_add':
+        unique_member_list = _get_unique_members_from_event_created(instance)
+        attendance_list = _generate_attendance_from_event_created_and_members(instance, unique_member_list)
+
+        # Create attendance (bulk)
+        EventAttendance.objects.bulk_create(attendance_list)
+
