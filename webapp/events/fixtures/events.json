@@ -1,0 +1,92 @@
+[
+{
+    "model": "events.eventtype",
+    "pk": 1,
+    "fields": {
+        "date_modified": "2018-03-31T14:46:52.779Z",
+        "date_created": "2018-03-31T14:46:52.779Z",
+        "name": "Normal",
+        "remarks": "Every Saturday"
+    }
+},
+{
+    "model": "events.eventtype",
+    "pk": 2,
+    "fields": {
+        "date_modified": "2018-03-31T14:47:07.333Z",
+        "date_created": "2018-03-31T14:47:07.333Z",
+        "name": "Special",
+        "remarks": ""
+    }
+},
+{
+    "model": "events.event",
+    "pk": 1,
+    "fields": {
+        "date_modified": "2018-04-16T13:37:44.844Z",
+        "date_created": "2018-04-05T14:47:18.036Z",
+        "name": "Love Life Retreat",
+        "series": "LLR",
+        "status": "Not started",
+        "speaker": null,
+        "worship_leader": null,
+        "description": "Test",
+        "event_type": 1,
+        "start_date": "2018-04-03T14:46:56Z",
+        "end_date": "2018-04-20T06:00:00Z",
+        "location": "Genting Highlands",
+        "attending_ministries": [
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "events.event",
+    "pk": 2,
+    "fields": {
+        "date_modified": "2018-08-26T08:09:04.111Z",
+        "date_created": "2018-04-16T13:59:46.367Z",
+        "name": "Overcoming Family Worries",
+        "series": "OFW Series",
+        "status": "Started",
+        "speaker": 1,
+        "worship_leader": 5,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "event_type": 1,
+        "start_date": "2018-04-16T13:59:35Z",
+        "end_date": "2018-04-25T12:00:00Z",
+        "location": "Sri Ebs",
+        "attending_ministries": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "events.event",
+    "pk": 3,
+    "fields": {
+        "date_modified": "2018-08-25T09:43:27.180Z",
+        "date_created": "2018-08-25T09:43:27.180Z",
+        "name": "Event 1",
+        "series": "Talk 1",
+        "status": "Not started",
+        "speaker": 1,
+        "worship_leader": 7,
+        "description": "Test123",
+        "event_type": 1,
+        "start_date": "2018-08-27T00:00:00Z",
+        "end_date": "2018-08-30T00:00:00Z",
+        "location": "Sri Ebs",
+        "attending_ministries": [
+            2,
+            3,
+            4
+        ]
+    }
+}
+]
