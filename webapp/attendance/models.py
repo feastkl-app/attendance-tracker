@@ -9,6 +9,9 @@ class EventAttendance(AbstractBaseDate):
     remarks = models.CharField(max_length=64, blank=True)
     attended = models.NullBooleanField()
 
+    class Meta:
+        verbose_name_plural = u"Event Attendance"
+
     def __str__(self):
         return "Event: %s (Attendance)" %(str(self.event))
 
