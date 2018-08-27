@@ -19,6 +19,7 @@ class MemberProfileListView(LoginRequiredMixin, ListView):
     model = MemberProfile
     context_object_name = 'members'
     template_name = 'account_members/member_list.html'
+    queryset = MemberProfile.objects.select_related('primary_role').all()
 
     def get_context_data(self, **kwargs):
          kwargs['total_count'] = MemberProfile.objects.count()

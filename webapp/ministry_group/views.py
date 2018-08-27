@@ -9,6 +9,7 @@ class MinistryGroupListView(LoginRequiredMixin, ListView):
     model = MinistryMemberGroup
     template_name = 'ministry_group/ministry_group_list.html'
     context_object_name = 'ministry_group'
+    queryset = MinistryMemberGroup.objects.select_related('ministry__ministry_type').all()
 
 
 class MinistryGroupDetailView(LoginRequiredMixin, DetailView):
