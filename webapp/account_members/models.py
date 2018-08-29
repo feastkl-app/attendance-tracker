@@ -57,18 +57,12 @@ class MemberProfile(AbstractBaseDate):
         return " ".join([self.firstname, self.lastname])
 
     def create_or_update_account(self):
-        if self.user:
-            print('defined user: %s' % self.user.pk)
-        else:
-            print('undefined user: %s' % self.user)
-
         username = generate_member_username(self.firstname, self.lastname)
 
         user, created = User.objects.get_or_create(username=username) 
         if created:
             password = '-'.join([PASSWORD_PREFIX, username])
             user.set_password(password)
-            print('creating account method')
             user.save()
         return user
 
