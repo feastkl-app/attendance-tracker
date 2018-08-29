@@ -19,6 +19,10 @@ class MemberProfileForm(forms.ModelForm):
             'active_member' ,
             'location',
         ]
+        widgets = {
+            'birthdate': forms.TextInput(attrs={'type': 'date'}),
+            'member_since': forms.TextInput(attrs={'type': 'date'}),
+        }
 
 class MemberTypeForm(forms.ModelForm):
     class Meta:
