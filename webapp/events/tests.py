@@ -6,7 +6,7 @@ from .models import Event
 
 # Create your tests here.
 class CreateEventTests(TestCase):
-    fixtures = ['events']
+    #fixtures = ['events']
     def setUp(self):
         # Create 
         pass

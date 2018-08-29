@@ -51,9 +51,22 @@
                 <div class="content">
                     <h5>{{ event.name }}</h5><span>Location: {{ event.location }}</span>
                   <div class="full-date"><small>{{ event.start_date }} - {{ event.end_date }}</small></div>
+                  <div class="full-date"><small><strong>Speaker:</strong> {{ event.speaker }}</small></div>
+                  <div class="full-date"><small><strong>Worship Leader:</strong> {{ event.worship_leader }}</small></div>
                 </div>
               </div>
-              <div class="date text-right"><span class="badge badge-success badge-events" >{{ event.event_status }}</span></div>
+              <!-- Event Status -->
+              <div class="date text-right">
+                {% if event.event_status == 'ONGOING' %}
+                  <span class="badge badge-success badge-events" >{{ event.event_status }}</span>
+                {% elif event.event_status == 'RECENT' %}
+                  <span class="badge badge-dark badge-events">{{ event.event_status }}</span>
+                {% else %}
+                  <span class="badge badge-info badge-events">{{ event.event_status }}</span>
+                {% endif %}
+              </div>
+              <!-- ./Event Status -->
+
             </div>
             <div class="quote has-shadow"> <small>{{ event.description }}</small></div>
             <div class="CTAs pull-right">

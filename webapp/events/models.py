@@ -34,11 +34,11 @@ class Event(AbstractBaseDate):
         """
             returns event status - RECENT, ONGOING, UPCOMING
         """
-        if self.start_date < timezone.now():
+        if timezone.now() > self.end_date:
             return 'RECENT'
-        elif self.end_date > timezone.now():
-            return 'UPCOMING'
-        else:
+        elif timezone.now() >= self.start_date:
             return 'ONGOING'
+        else:
+            return 'UPCOMING'
 
 
