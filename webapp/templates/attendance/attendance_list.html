@@ -18,6 +18,22 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
+
+	  <!-- Search -->
+	  <div class="card-close">
+	    <div class="dropdown">
+		  <div class="form-group">
+		    <div class="input-group">
+		  	  <input type="text" class="form-control" placeholder="Search event name">
+		  	  <div class="input-group-append">
+		  	    <button type="button" class="btn btn-primary">Go!</button>
+		  	  </div>
+		    </div>
+		  </div>
+	    </div>
+	  </div>
+	  <!-- ./Search -->
+
       <div class="card-header d-flex align-items-center">
         <h3 class="h4">Event Attendance</h3>
       </div>
@@ -34,6 +50,15 @@
               </tr>
             </thead>
             <tbody>
+              {% for attendance in attendance_list %}
+                <tr>
+                  <td>{{ attendance.event.name }}</td>
+                  <td>{{ attendance.member.firstname }}</td>
+                  <td>{{ attendance.member.lastname }}</td>
+                  <td>{{ attendance.event.event_status }}</td>
+                  <td>{{ attendance.attended }}</td>
+                </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>

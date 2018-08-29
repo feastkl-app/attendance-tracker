@@ -7,6 +7,6 @@ from .models import EventAttendance
 
 class AttendanceListView(LoginRequiredMixin, ListView):
     model = EventAttendance
-    context_object_name = 'attendance'
+    context_object_name = 'attendance_list'
     template_name = 'attendance/attendance_list.html'
 
