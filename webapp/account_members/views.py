@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView, TemplateView, UpdateView
 
@@ -22,8 +23,28 @@ class MemberProfileListView(LoginRequiredMixin, ListView):
     queryset = MemberProfile.objects.select_related('primary_role').all()
 
     def get_context_data(self, **kwargs):
-         kwargs['total_count'] = MemberProfile.objects.count()
-         return super().get_context_data(**kwargs)
+        kwargs['total_count'] = MemberProfile.objects.count()
+        q = self.request.GET.get('q')
+
+        # Handling search query
+        if q:
+            kwargs['has_search'] = True
+            kwargs['search_param'] = q
+        
+        return super().get_context_data(**kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        q = self.request.GET.get('q')
+        
+        # Handling search query
+        if q:
+            queryset = queryset.filter(
+                Q(firstname__icontains=q) |
+                Q(lastname__icontains=q)
+            )
+
+        return queryset
 
 class MemberProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = MemberProfile

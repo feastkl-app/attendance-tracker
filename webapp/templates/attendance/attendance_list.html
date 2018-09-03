@@ -22,14 +22,16 @@
 	  <!-- Search -->
 	  <div class="card-close">
 	    <div class="dropdown">
-		  <div class="form-group">
-		    <div class="input-group">
-		  	  <input type="text" class="form-control" placeholder="Search event name">
-		  	  <div class="input-group-append">
-		  	    <button type="button" class="btn btn-primary">Go!</button>
-		  	  </div>
+          <form action="{% url 'attendance:list' %}" method="GET">
+		    <div class="form-group">
+		      <div class="input-group">
+                  <input type="text" class="form-control" name="q" placeholder="Search event name" value="{{ search_param }}">
+		    	  <div class="input-group-append">
+		    	    <button type="submit" class="btn btn-primary">Go!</button>
+		    	  </div>
+		      </div>
 		    </div>
-		  </div>
+          </form>
 	    </div>
 	  </div>
 	  <!-- ./Search -->
