@@ -3,9 +3,8 @@ from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
+from django.conf import settings
 from utility.models import AbstractBaseDate, AbstractBaseType
-
-PASSWORD_PREFIX = 'feastkl' #FIX ME
 
 def create_member_profile_user_account(sender, instance, created, **kwargs):
     if created:
@@ -61,7 +60,7 @@ class MemberProfile(AbstractBaseDate):
 
         user, created = User.objects.get_or_create(username=username) 
         if created:
-            password = '-'.join([PASSWORD_PREFIX, username])
+            password = '-'.join([settings.PASSWORD_PREFIX, username])
             user.set_password(password)
             user.save()
         return user

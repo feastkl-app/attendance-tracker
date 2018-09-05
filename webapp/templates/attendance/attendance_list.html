@@ -57,7 +57,15 @@
                   <td>{{ attendance.event.name }}</td>
                   <td>{{ attendance.member.firstname }}</td>
                   <td>{{ attendance.member.lastname }}</td>
-                  <td>{{ attendance.event.event_status }}</td>
+                  <td>
+                    {% if attendance.event.event_status == 'ONGOING' %}
+                      <span class="badge badge-success badge-events" >{{ attendance.event.event_status }}</span>
+                    {% elif attendance.event.event_status == 'RECENT' %}
+                      <span class="badge badge-dark badge-events">{{ attendance.event.event_status }}</span>
+                    {% else %}
+                      <span class="badge badge-info badge-events">{{ attendance.event.event_status }}</span>
+                    {% endif %}
+                  </td>
                   <td>{{ attendance.attended }}</td>
                 </tr>
               {% endfor %}

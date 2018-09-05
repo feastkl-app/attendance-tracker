@@ -10,15 +10,11 @@ BASE_DIR = str(environ.Path(__file__) - 3)
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
 ALLOWED_HOSTS = []
 
+PASSWORD_PREFIX = env('PASSWORD_PREFIX', default='feastkl')
 
 # Application definition
 

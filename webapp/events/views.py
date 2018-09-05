@@ -27,3 +27,8 @@ class EventsListView(LoginRequiredMixin, ListView):
         #context['upcoming_events'] = Event.objects.filter(start_date__gte=timezone.now()) 
 
         return context
+
+class EventsDetailView(LoginRequiredMixin, DetailView):
+    model = Event
+    context_object_name = 'event'
+    template_name = 'events/events_details.html'

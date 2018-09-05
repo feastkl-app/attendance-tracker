@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' with events_active="active" %}
+{% endblock sidebar %}
+
+{% block header %}
+  Events
+{% endblock header %}
+
+{% block breadcrumbs %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'events:list' %}">Events</a></li>
+  <li class="breadcrumb-item active">{{ event.name }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="client card">
+      <div class="card-close">
+        <div class="dropdown">
+          <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+          <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+        </div>
+      </div>
+      <div class="card-body text-center">
+        <div class="client-avatar"><img src="{% static 'img/feast-logo.jpg' %}" alt="..." class="img-fluid rounded-circle">
+        </div>
+        <div class="client-title">
+          <h3>{{ event.name }}</h3><span>{{ event.status }}</span><a href="#">{{ event.event_status }}</a>
+        </div>
+        <div class="client-info">
+          <div class="row">
+            <div class="col-4"><strong>20</strong><br><small>Attendance</small></div>
+            <div class="col-4"><strong>54</strong><br><small>Attended</small></div>
+            <div class="col-4"><strong>235</strong><br><small>Not Attended</small></div>
+          </div>
+        </div>
+        <div class="h4 event-table-header">Attendance</div>
+
+        <!-- Attendance Table -->
+        <div>
+          <div class="table-responsive">                       
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- ./ Attendance Table -->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
