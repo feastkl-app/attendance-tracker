@@ -5,8 +5,10 @@
   <!-- Search Box-->
   <div class="search-box">
     <button class="dismiss"><i class="icon-close"></i></button>
-    <form id="searchForm" action="#" role="search">
-      <input type="search" placeholder="What are you looking for..." class="form-control">
+    <!-- <form id="searchForm" action="#" role="search"> -->
+    <form action="{% url 'attendance:list' %}" method="GET" id="searchForm" role="search">
+      <input type="text" placeholder="Search Events" class="form-control" name="q" value="{{ search_param }}">
+      <!-- <input type="text" class="form-control" name="q" placeholder="Search event name" value="{{ search_param }}"> -->
     </form>
   </div>
   <div class="container-fluid">

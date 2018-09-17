@@ -1,14 +1,15 @@
+"""
+    Account Members Views
+"""
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.db.models import Q
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView, TemplateView, UpdateView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
-from .forms import MemberProfileForm, MemberTypeForm
-from .models import MemberProfile, MemberType
-
-class SampleView(TemplateView):
-    template_name = 'index.html'
+from .forms import MemberProfileForm
+from .models import MemberProfile
 
 class MemberProfileCreateView(LoginRequiredMixin, CreateView):
     model = MemberProfile
@@ -30,7 +31,6 @@ class MemberProfileListView(LoginRequiredMixin, ListView):
         if q:
             kwargs['has_search'] = True
             kwargs['search_param'] = q
-        
         return super().get_context_data(**kwargs)
 
     def get_queryset(self):

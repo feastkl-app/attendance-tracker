@@ -4,7 +4,7 @@ from .models import MemberProfile, MemberType
 
 class MemberProfileForm(forms.ModelForm):
     class Meta:
-        model = MemberProfile 
+        model = MemberProfile
         fields = [
             'firstname',
             'lastname',

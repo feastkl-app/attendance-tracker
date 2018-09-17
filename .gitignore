@@ -93,3 +93,10 @@ db.sqlite3
 ### Vim Related ###
 *.sw[o|p]
 
+### VS Code Related ###
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

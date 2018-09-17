@@ -67,4 +67,3 @@ class MemberProfile(AbstractBaseDate):
 
 post_save.connect(create_member_profile_user_account, sender=MemberProfile)
 post_delete.connect(delete_member_profile_user_account, sender=MemberProfile)
-
