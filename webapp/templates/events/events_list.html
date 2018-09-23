@@ -2,35 +2,61 @@
 {% load static %}
 
 {% block sidebar %}
-  {% include 'includes/sidebar.html' with events_active="active" %}
+{% include 'includes/sidebar.html' with events_active="active" %}
 {% endblock sidebar %}
 
 {% block header %}
-  Members
+Members
 {% endblock header %}
 
 {% block breadcrumbs %}
-  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-  <li class="breadcrumb-item active">Events</li>
+<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item active">Events</li>
 {% endblock breadcrumbs %}
 
 {% block content %}
-<div class="row">
-  <div class="col-lg-4">
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Event Status</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>All</option>
-        <option>Recent</option>
-        <option>Ongoing</option>
-        <option>Upcoming</option>
-      </select>
-    </div>
+<div class="row event-filter">
+  <div class="col-lg-6">
+    <a href="{% url 'events:new'  %}" class="btn btn-outline-dark">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i> Create Event</a>
+  </div>
+  <div class="col-lg-6">
+    <form action="{% url 'events:list' %}" method="GET">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" name="q" placeholder="Search event name, type, status" value="{{ search_param }}">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Go!</button>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 <div class="row">
+  {% for event in events %}
+  <div class="col-sm-6 col-md-4">
+    <div class="client card event">
+      <img src="{% static 'img/feast-event-default-cover.jpg' %}" class="card-img-top">
+      <div class="card-body text-center">
+        <div class="status bg-green"></div>
+        <div class="client-title">
+          <h3>{{ event.name }}</h3>
+          <span>{{ event.event_type }}</span>
+          <a href="#">{{ event.event_status }}</a>
+        </div>
+        <div class="client-info">
+          <div class="row">
+            <div class="col-6"><strong>20</strong><br><small>Attendees</small></div>
+            <div class="col-6"><strong>54</strong><br><small>Attended</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
   <!-- events-->
-  <div class="col-lg-12">
+  <!-- <div class="col-lg-12">
     <div class="daily-feeds card">
 	  <div class="card-close">
 	    <div class="dropdown">
@@ -43,7 +69,6 @@
 	  </div>
       <div class="card-body no-padding">
         {% for event in events %}
-          <!-- event -->
           <div class="item clearfix">
             <div class="feed d-flex justify-content-between">
               <div class="feed-body d-flex justify-content-between">
@@ -55,7 +80,6 @@
                   <div class="full-date"><small><strong>Worship Leader:</strong> {{ event.worship_leader }}</small></div>
                 </div>
               </div>
-              <!-- Event Status -->
               <div class="date text-right">
                 {% if event.event_status == 'ONGOING' %}
                   <span class="badge badge-success badge-events" >{{ event.event_status }}</span>
@@ -65,7 +89,6 @@
                   <span class="badge badge-info badge-events">{{ event.event_status }}</span>
                 {% endif %}
               </div>
-              <!-- ./Event Status -->
 
             </div>
             <div class="quote has-shadow"> <small>{{ event.description }}</small></div>
@@ -76,11 +99,10 @@
                 {% endfor %}
             </div>
           </div>
-          <!-- ./event -->
         {% endfor %}
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- ./events-->
 
 </div>

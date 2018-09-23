@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="{% static 'css/style.sea.css' %}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+
+    {% block stylesheet %}{% endblock %}
+
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
   </head>
@@ -70,5 +75,8 @@
     <script src="{% static 'js/charts-home.js' %}"></script>
     <!-- Main File-->
     <script src="{% static 'js/front.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+    {% block javascript %}{% endblock %}
   </body>
 </html>

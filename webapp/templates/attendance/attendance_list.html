@@ -2,16 +2,16 @@
 {% load static %}
 
 {% block sidebar %}
-  {% include 'includes/sidebar.html' with attendance_active="active" %}
+{% include 'includes/sidebar.html' with attendance_active="active" %}
 {% endblock sidebar %}
 
 {% block header %}
-  Attendance
+Attendance
 {% endblock header %}
 
 {% block breadcrumbs %}
-  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-  <li class="breadcrumb-item active">Attendance</li>
+<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+<li class="breadcrumb-item active">Attendance</li>
 {% endblock breadcrumbs %}
 
 {% block content %}
@@ -19,28 +19,28 @@
   <div class="col-lg-12">
     <div class="card">
 
-	  <!-- Search -->
-	  <div class="card-close">
-	    <div class="dropdown">
+      <!-- Search -->
+      <div class="card-close">
+        <div class="dropdown">
           <form action="{% url 'attendance:list' %}" method="GET">
-		    <div class="form-group">
-		      <div class="input-group">
-                  <input type="text" class="form-control" name="q" placeholder="Search event name" value="{{ search_param }}">
-		    	  <div class="input-group-append">
-		    	    <button type="submit" class="btn btn-primary">Go!</button>
-		    	  </div>
-		      </div>
-		    </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" name="q" placeholder="Search event name" value="{{ search_param }}">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary">Go!</button>
+                </div>
+              </div>
+            </div>
           </form>
-	    </div>
-	  </div>
-	  <!-- ./Search -->
+        </div>
+      </div>
+      <!-- ./Search -->
 
       <div class="card-header d-flex align-items-center">
         <h3 class="h4">Event Attendance</h3>
       </div>
       <div class="card-body">
-        <div class="table-responsive">   
+        <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
               <tr>
@@ -53,21 +53,21 @@
             </thead>
             <tbody>
               {% for attendance in attendance_list %}
-                <tr>
-                  <td>{{ attendance.event.name }}</td>
-                  <td>{{ attendance.member.firstname }}</td>
-                  <td>{{ attendance.member.lastname }}</td>
-                  <td>
-                    {% if attendance.event.event_status == 'ONGOING' %}
-                      <span class="badge badge-success badge-events" >{{ attendance.event.event_status }}</span>
-                    {% elif attendance.event.event_status == 'RECENT' %}
-                      <span class="badge badge-dark badge-events">{{ attendance.event.event_status }}</span>
-                    {% else %}
-                      <span class="badge badge-info badge-events">{{ attendance.event.event_status }}</span>
-                    {% endif %}
-                  </td>
-                  <td>{{ attendance.attended }}</td>
-                </tr>
+              <tr>
+                <td>{{ attendance.event.name }}</td>
+                <td>{{ attendance.member.firstname }}</td>
+                <td>{{ attendance.member.lastname }}</td>
+                <td>
+                  {% if attendance.event.event_status == 'ONGOING' %}
+                  <span class="badge badge-success badge-events">{{ attendance.event.event_status }}</span>
+                  {% elif attendance.event.event_status == 'RECENT' %}
+                  <span class="badge badge-dark badge-events">{{ attendance.event.event_status }}</span>
+                  {% else %}
+                  <span class="badge badge-info badge-events">{{ attendance.event.event_status }}</span>
+                  {% endif %}
+                </td>
+                <td>{{ attendance.attended }}</td>
+              </tr>
               {% endfor %}
             </tbody>
           </table>

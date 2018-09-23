@@ -45,3 +45,6 @@ class Event(AbstractBaseDate):
             return 'ONGOING'
         else:
             return 'UPCOMING'
+
+    def get_description_as_markdown(self):
+        return mark_safe(markdown(self.description, safe_mode='escape'))

@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.db.models import Q
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView, TemplateView, UpdateView
+
+from django.views.generic import ListView
 
 from .models import EventAttendance
 

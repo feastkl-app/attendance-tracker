@@ -23,10 +23,29 @@ class EventsListView(LoginRequiredMixin, ListView):
         .all().order_by('-date_modified')
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        #context['upcoming_events'] = Event.objects.filter(start_date__gte=timezone.now()) 
+        q = self.request.GET.get('q')
 
-        return context
+        # Handling search query
+        if q:
+            print(f'query = {q}')
+            kwargs['has_search'] = True
+            kwargs['search_param'] = q
+        
+        return super().get_context_data(**kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        q = self.request.GET.get('q')
+        
+        # Handling search query
+        if q:
+            queryset = queryset.filter(
+                Q(name__icontains=q) |
+                Q(status__icontains=q) |
+                Q(event_type__name__icontains=q)
+            )
+
+        return queryset
 
 class EventsDetailView(LoginRequiredMixin, DetailView):
     model = Event
