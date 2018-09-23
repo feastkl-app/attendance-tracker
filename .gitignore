@@ -89,6 +89,7 @@ local_settings.py
 .env
 .venv
 db.sqlite3
+dev_mysql_cred.cnf
 
 ### Vim Related ###
 *.sw[o|p]

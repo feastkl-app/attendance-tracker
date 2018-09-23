@@ -7,14 +7,14 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = str(environ.Path(__file__) - 3)
-env = environ.Env()
+ENV = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-DEBUG = env.bool('DJANGO_DEBUG', False)
+DEBUG = ENV.bool('DJANGO_DEBUG', False)
 
 ALLOWED_HOSTS = []
 
-PASSWORD_PREFIX = env('PASSWORD_PREFIX', default='feastkl')
+PASSWORD_PREFIX = ENV('PASSWORD_PREFIX', default='feastkl')
 
 # Application definition
 
@@ -27,10 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'utility.apps.UtilityConfig',
 
-    #Third Party
+    # Third Party
     'crispy_forms',
 
-    #My apps
+    # My apps
     'account_members.apps.AccountMembersConfig',
     'attendance.apps.AttendanceConfig',
     'dashboard.apps.DashboardConfig',
@@ -53,7 +53,7 @@ ROOT_URLCONF = 'webapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,8 +74,13 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': { 'read_default_file': ENV('MYSQL_CONF_PATH') },
+        'TEST': {
+            # this gets you in-memory sqlite for tests, which is fast
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
 }
 

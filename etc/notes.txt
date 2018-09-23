@@ -33,3 +33,10 @@ Group Type
 
 # Running Local 
 python manage.py runserver --settings=webapp.settings.local
+
+# Setting up mysql DB. save  /path/to/db/my.cnf
+[client]
+database = feklats
+user = <username>
+password = <password>
+default-character-set = utf8
